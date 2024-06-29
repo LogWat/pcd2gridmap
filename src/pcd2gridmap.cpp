@@ -20,9 +20,10 @@ Pcd2Gridmap::Pcd2Gridmap(): pnh("~")
     pnh.param<double>("max_z", max_z, 1.0);
     pnh.param<std::string>("frame_id", frame_id, "map");
     pnh.param<std::string>("pcd_file", pcd_file, "test.pcd");
+    pnh.param<std::string>("map_topic", map_topic, "gridmap");
 
     // Publisher
-    gridmap_pub = nh.advertise<nav_msgs::OccupancyGrid>("gridmap", 1);
+    gridmap_pub = nh.advertise<nav_msgs::OccupancyGrid>(map_topic, 1);
 }
 
 void Pcd2Gridmap::load_pcd(const std::string &file, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud) {
