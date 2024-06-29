@@ -14,13 +14,14 @@ class Pcd2Gridmap
 {
 private:
     ros::NodeHandle nh, pnh;
-    ros::Publisher gridmap_pub;
+    ros::Publisher gridmap_pub, metadata_pub;
     
     // Options
     double resolution;
     double min_z, max_z;
     std::string frame_id;
     std::string pcd_file;
+    std::string map_topic;
     
     void load_pcd(const std::string &file, pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud);
     void cloud2gridmap(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, nav_msgs::OccupancyGrid &gridmap);
